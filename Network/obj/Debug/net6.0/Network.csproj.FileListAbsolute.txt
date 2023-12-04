@@ -1,0 +1,11 @@
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\bin\Debug\net6.0\Network.deps.json
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\bin\Debug\net6.0\Network.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\bin\Debug\net6.0\Network.pdb
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\obj\Debug\net6.0\Network.GeneratedMSBuildEditorConfig.editorconfig
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\obj\Debug\net6.0\Network.AssemblyInfoInputs.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\obj\Debug\net6.0\Network.AssemblyInfo.cs
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\obj\Debug\net6.0\Network.csproj.CoreCompileInputs.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\obj\Debug\net6.0\Network.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\obj\Debug\net6.0\refint\Network.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\obj\Debug\net6.0\Network.pdb
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\Network\obj\Debug\net6.0\ref\Network.dll

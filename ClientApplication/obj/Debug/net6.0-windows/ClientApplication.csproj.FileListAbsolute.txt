@@ -1,0 +1,16 @@
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\bin\Debug\net6.0-windows\ClientApplication.exe
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\bin\Debug\net6.0-windows\ClientApplication.deps.json
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\bin\Debug\net6.0-windows\ClientApplication.runtimeconfig.json
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\bin\Debug\net6.0-windows\ClientApplication.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\bin\Debug\net6.0-windows\ClientApplication.pdb
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.ClientForm.resources
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.csproj.GenerateResource.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.GeneratedMSBuildEditorConfig.editorconfig
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.AssemblyInfoInputs.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.AssemblyInfo.cs
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.csproj.CoreCompileInputs.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\refint\ClientApplication.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.pdb
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ClientApplication.genruntimeconfig.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ClientApplication\obj\Debug\net6.0-windows\ref\ClientApplication.dll

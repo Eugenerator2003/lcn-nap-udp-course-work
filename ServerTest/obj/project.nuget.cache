@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "zqKmqv/1PxZaT63nWyqB7HbxIgWkYb1c8slq1WbvZpz/wqA8POOZ0ZzMeqns4MRJIGEps0L57+3bE9+ughnqyw==",
+  "success": true,
+  "projectFilePath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ServerTest\\Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Евгений\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\Евгений\\.nuget\\packages\\system.drawing.common\\8.0.0\\system.drawing.common.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "задача-lcn-pnp-udp-course-work",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}

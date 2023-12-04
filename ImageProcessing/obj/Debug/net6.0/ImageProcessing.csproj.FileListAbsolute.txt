@@ -1,0 +1,12 @@
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\bin\Debug\net6.0\ImageProcessing.deps.json
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\bin\Debug\net6.0\ImageProcessing.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\bin\Debug\net6.0\ImageProcessing.pdb
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\ImageProcessing.csproj.AssemblyReference.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\ImageProcessing.GeneratedMSBuildEditorConfig.editorconfig
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\ImageProcessing.AssemblyInfoInputs.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\ImageProcessing.AssemblyInfo.cs
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\ImageProcessing.csproj.CoreCompileInputs.cache
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\ImageProcessing.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\refint\ImageProcessing.dll
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\ImageProcessing.pdb
+F:\лабы\сем 7\псп\курсовая работа\lcn-nap-udp-course-work\ImageProcessing\obj\Debug\net6.0\ref\ImageProcessing.dll
