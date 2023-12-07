@@ -142,5 +142,35 @@ namespace ClientWpfApplication
             image.Source = bitmapImage;
             panel.Children.Add(image);
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (filteredImages.Children.Count == 0)
+            {
+                MessageBox.Show("Нет обработанных изображений", "Ошибка!");
+                return;
+            }
+
+            string dirname = "Filtered images";
+            if (Directory.Exists(dirname))
+            {
+                Directory.Delete(dirname, true);
+            }
+            Directory.CreateDirectory(dirname);
+            var imageBoxes = filteredImages.Children;
+            int count = imageBoxes.Count;
+            for (int i = 0; i < count; i++)
+            {
+                BitmapEncoder encoder = new JpegBitmapEncoder();
+                var box = (Image)imageBoxes[i];
+                encoder.Frames.Add(BitmapFrame.Create((BitmapImage)box.Source));
+                using (var fileStream = new FileStream(dirname + '/' + (i + 1) + ".jpg", FileMode.CreateNew))
+                {
+                    encoder.Save(fileStream);
+                }
+            }
+
+            MessageBox.Show("Данные успешно сохранены", "Успех");
+        }
     }
 }

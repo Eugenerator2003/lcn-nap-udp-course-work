@@ -10,7 +10,7 @@
         <Menu Background="LightGray" VerticalAlignment="Top" Height="18">
             <MenuItem Header="Файл">
                 <MenuItem Header="Загрузить" Click="MenuItem_Click"></MenuItem>
-                <MenuItem Header="Сохранить обработанное"></MenuItem>
+                <MenuItem Header="Сохранить обработанное" Click="MenuItem_Click_1"></MenuItem>
             </MenuItem>
         </Menu>
         <Grid Margin="0,18,0,0">

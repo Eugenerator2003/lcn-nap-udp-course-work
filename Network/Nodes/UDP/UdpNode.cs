@@ -168,7 +168,7 @@ namespace Network.Nodes.UDP
 
         private bool SendDatagram(byte[] datagramData, IPEndPoint endPoint)
         {
-            int counter = 500;
+            int counter = 1000;
             //int counter = 10000;
             bool received = false;
             client.Send(datagramData, endPoint);
