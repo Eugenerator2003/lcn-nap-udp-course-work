@@ -1,0 +1,14 @@
+{
+  "host": {
+    "clientPort": "9001",
+    "clusterPort": "9002",
+
+    "clientThreads": "2",
+    "clusterThreads": "2"
+  },
+
+  "server": {
+    "ip": "127.0.0.1",
+    "port": "9002"
+  }
+}

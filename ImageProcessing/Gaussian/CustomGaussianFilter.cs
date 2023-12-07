@@ -14,9 +14,9 @@ namespace ImageProcessing.Gaussian
         private int offset;
         private int kernelSize;
 
-        public CustomGaussianFilter(int radius) : base(radius)
+        public CustomGaussianFilter(int radius, double sigma) : base(radius, sigma)
         {
-            ResizeKernel(radius);
+            SetParameters(radius, sigma);
         }
 
         public override Bitmap Apply(Bitmap input)
@@ -35,30 +35,35 @@ namespace ImageProcessing.Gaussian
             return output;
         }
 
-        public override void ResizeKernel(int radius)
+        public override void SetParameters(int radius, double sigma)
         {
-            kernelSize = 2 * radius + 1;
-            offset = kernelSize / 2;
-            Kernel = new double[kernelSize, kernelSize];
-            double sigma = radius / 3.0;
-
-            double sum = 0;
-
-            for (int i = -radius; i <= radius; i++)
+            if (radius != Radius && sigma != Sigma)
             {
-                for (int j = -radius; j <= radius; j++)
+                Radius = radius;
+                Sigma = sigma;
+
+                kernelSize = 2 * radius + 1;
+                offset = kernelSize / 2;
+                Kernel = new double[kernelSize, kernelSize];
+
+                double sum = 0;
+
+                for (int i = -radius; i <= radius; i++)
                 {
-                    double value = Math.Exp(-(i * i + j * j) / (2.0 * sigma * sigma));
-                    Kernel[i + radius, j + radius] = value;
-                    sum += value;
+                    for (int j = -radius; j <= radius; j++)
+                    {
+                        double value = Math.Exp(-(i * i + j * j) / (2.0 * Sigma * Sigma));
+                        Kernel[i + radius, j + radius] = value;
+                        sum += value;
+                    }
                 }
-            }
 
-            for (int i = 0; i < kernelSize; i++)
-            {
-                for (int j = 0; j < kernelSize; j++)
+                for (int i = 0; i < kernelSize; i++)
                 {
-                    Kernel[i, j] /= sum;
+                    for (int j = 0; j < kernelSize; j++)
+                    {
+                        Kernel[i, j] /= sum;
+                    }
                 }
             }
         }

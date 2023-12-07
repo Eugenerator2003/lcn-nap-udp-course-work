@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "LRYrp59FOw5Gj9oHd6KSgxl9GitqNCSIdR4TgA47mOv/vpWuR993xbWhmzX1hMUsTvQFbobSAiSEcJ0lkS8Zyg==",
+  "dgSpecHash": "5qlHGxb5JDVHqapEf6oTjv6x7U6HlnRveeW53vTS0FBwr73pU/PNOYkVRq5/2pEy2sADldtAaaaoGHhLWS5AOg==",
   "success": true,
   "projectFilePath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ImageProcessing\\ImageProcessing.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Евгений\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
-    "C:\\Users\\Евгений\\.nuget\\packages\\aforge.imaging\\2.2.5\\aforge.imaging.2.2.5.nupkg.sha512",
-    "C:\\Users\\Евгений\\.nuget\\packages\\aforge.math\\2.2.5\\aforge.math.2.2.5.nupkg.sha512",
-    "C:\\Users\\Евгений\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
-    "C:\\Users\\Евгений\\.nuget\\packages\\system.drawing.common\\8.0.0\\system.drawing.common.8.0.0.nupkg.sha512"
+    "C:\\Users\\Eugene\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
+    "C:\\Users\\Eugene\\.nuget\\packages\\aforge.imaging\\2.2.5\\aforge.imaging.2.2.5.nupkg.sha512",
+    "C:\\Users\\Eugene\\.nuget\\packages\\aforge.math\\2.2.5\\aforge.math.2.2.5.nupkg.sha512",
+    "C:\\Users\\Eugene\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\Eugene\\.nuget\\packages\\system.drawing.common\\8.0.0\\system.drawing.common.8.0.0.nupkg.sha512"
   ],
   "logs": [
     {

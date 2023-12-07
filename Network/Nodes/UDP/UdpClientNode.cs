@@ -19,11 +19,12 @@ namespace Network.Nodes.UDP
 
         public UdpClientNode() : this(0)
         {
-
+            
         }
 
         public UdpClientNode(int port) : base(port)
         {
+            //client = new UdpClient(port);
         }
 
         public override void Start()

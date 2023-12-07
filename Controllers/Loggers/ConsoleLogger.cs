@@ -37,7 +37,7 @@ namespace NodeControllers.Loggers
             {
                 if (messages.TryDequeue(out var message))
                 {
-                    Console.WriteLine();
+                    Console.WriteLine(message);
                 }
             }
         }

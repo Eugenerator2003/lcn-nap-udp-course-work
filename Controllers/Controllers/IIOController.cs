@@ -8,8 +8,6 @@ namespace NodeControllers.Controllers
 {
     public interface IIOController : IController
     {
-        delegate void ByteProcessing(byte[] data);
-
         event ByteProcessing OnReceiving;
 
         bool ConnectToServer();

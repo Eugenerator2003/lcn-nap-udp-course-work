@@ -12,7 +12,7 @@ namespace ImageProcessing.Gaussian
     {
         GaussianBlur filter;
 
-        public AForgeGaussianFilter(int radius) : base(radius)
+        public AForgeGaussianFilter(int radius, double sigma) : base(radius, sigma)
         {
             filter = new GaussianBlur(radius);
         }
@@ -22,9 +22,10 @@ namespace ImageProcessing.Gaussian
             return filter.Apply(image);
         }
 
-        public override void ResizeKernel(int radius)
+        public override void SetParameters(int radius, double sigma)
         {
             filter.Size = radius;
+            filter.Sigma = sigma;
         }
     }
 }

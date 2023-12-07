@@ -8,6 +8,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
+using System.Drawing;
 
 namespace NodeControllers.Controllers
 {
@@ -59,6 +61,7 @@ namespace NodeControllers.Controllers
                     var data = task.Item2;
 
                     while (!clusterReadiness.Values.Any(r => r)) ;
+
                     var destPoint = clusterReadiness.FirstOrDefault(r => r.Value).Key;
                     clusterReadiness[destPoint] = false;
                     clusterSide.EnqueueMessage(data, destPoint);
@@ -76,8 +79,11 @@ namespace NodeControllers.Controllers
                     var srcPoint = task.Item1;
                     var data = task.Item2;
                     var destPoint = clusterClientBinding[srcPoint];
+                    //var validData = new byte[data.Length - 3];
+                    //Buffer.BlockCopy(data, 0, validData, 0, validData.Length);
                     clientSide.EnqueueMessage(data, destPoint);
                     clusterClientBinding.Remove(srcPoint, out var temp);
+                    clusterReadiness[srcPoint] = true;
                 }
             }
         }
@@ -90,18 +96,25 @@ namespace NodeControllers.Controllers
 
         private void SetClusterEvents()
         {
-            clusterSide.OnClientConnected += (point) => clusterReadiness.TryAdd(point, true);
-            clusterSide.OnFailedMessaging += (data, point) => serializationTasks.Enqueue((point, data));
+            clusterSide.OnClientConnected += (point) =>
+            {
+                clusterReadiness.TryAdd(point, true);
+                //clusterClientBinding.TryAdd(point, new ConcurrentQueue<IPEndPoint>());
+            };
             clusterSide.OnClientDisconnected += (point) =>
             {
                 logger?.Log($"Cluster {point} disconnected ");
                 clusterReadiness.TryRemove(point, out bool tmp);
-                clusterClientBinding.TryRemove(point, out IPEndPoint? tmp2);
+                clusterClientBinding.TryRemove(point, out var q);
             };
+
+            clusterSide.OnFailedMessaging += (data, point) => serializationTasks.Enqueue((point, data));
+
             clusterSide.OnAllReceived += (data, point) =>
             {
                 processedTasks.Enqueue((point, data));
-                clusterReadiness[point] = true;
+                //clusterReadiness[point] = true;
+                logger?.Log($"Cluster complete task");
             };
         }
     }

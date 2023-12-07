@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 
 namespace NodeControllers.Controllers
 {
-    internal class ClientController : IIOController
+    public class ClientController : IIOController
     {
-        public event IIOController.ByteProcessing? OnReceiving;
+        public event IController.ByteProcessing? OnReceiving;
+
+        public event IController.ConnectionHandler OnFailedMessaging;
 
         public ILogger? Logger { get; }
 
@@ -31,7 +33,19 @@ namespace NodeControllers.Controllers
         public void Start()
         {
             ioNode.OnAllReceived += (bytes, point) => OnReceiving?.Invoke(bytes);
-            ioNode.OnAllReceived += (bytes, point) => Logger?.Log($"received bytes: {bytes.Length}");
+            ioNode.OnAllReceived += (bytes, point) => Logger?.Log($"Received bytes: {bytes.Length}");
+
+
+            ioNode.OnFailedMessaging += (bytes, point) => OnFailedMessaging?.Invoke(); 
+            ioNode.OnFailedMessaging += (bytes, point) => Logger?.Log($"Failed on sending to {point}");
+            ioNode.OnSuccessConnection += (point) => Logger?.Log($"Successfully connected to {point}");
+
+            ioNode.OnFailedConnection += (point) => OnFailedMessaging?.Invoke();
+            ioNode.OnFailedConnection += (point) => isConneted = false;
+            ioNode.OnSuccessConnection += (point) => isConneted = true;
+
+            ioNode.Start();
+            Logger?.Log($"Client started at {ioNode.LocalEndPoint}");
         }
 
         public void Send(byte[] bytes)
@@ -41,9 +55,7 @@ namespace NodeControllers.Controllers
 
         public bool ConnectToServer()
         {
-            ioNode.OnFailedConnection += (point) => isConneted = false;
-            ioNode.OnSuccessConnection += (point) => isConneted = true;
-            ioNode.OnAllReceived += (data, point) => OnReceiving?.Invoke(data);
+            isConneted = null;
             ioNode.Connect(server);
             while (isConneted == null) ;
             return (bool)isConneted;

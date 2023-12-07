@@ -19,25 +19,32 @@ namespace Network.Nodes
         /// </summary>
         /// <param name="data"></param>
         /// <param name="endPoint"></param>
-        public delegate void MessageHandler(byte[] data, IPEndPoint endPoint);
+        public delegate void EventHandler(byte[] data, IPEndPoint endPoint);
+
+        /// <summary>
+        /// Обработка события соединения
+        /// </summary>
+        public delegate void ConnectionHandler(IPEndPoint endPoint);
 
         /// <summary>
         /// Событие обработки полученных данных
         /// </summary>
-        public event MessageHandler OnAllReceived;
+        public event EventHandler OnAllReceived;
 
         /// <summary>
         /// Событие обработки ошибки отправки сообщения
         /// </summary>
-        public event MessageHandler OnFailedMessaging;
+        public event EventHandler OnFailedMessaging;
 
         /// <summary>
         /// Обработка полученного результата
         /// </summary>
         /// <param name="receiveResult">Результат чтения из UDP сокета</param>
-        /// <param name="sendOk">Необходимость отправлять </param>
+        /// <param name="pipelineContext">Необходимость отправлять </param>
         /// <returns></returns>
-        public delegate void OnReceived(UdpReceiveResult receiveResult, PipelineContext sendOk);
+        public delegate void OnReceived(UdpReceiveResult receiveResult, PipelineContext pipelineContext);
+
+        IPEndPoint LocalEndPoint { get; }
 
         /// <summary>
         /// Запуск сетевого узла. Чтение и отправка данных

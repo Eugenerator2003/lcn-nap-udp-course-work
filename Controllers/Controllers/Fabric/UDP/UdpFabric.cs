@@ -49,7 +49,7 @@ namespace NodeControllers.Controllers.Fabric.UDP
             int? clusterPort = configuration["host"]?["clusterPort"]?.Value<int>();
             int? clusterThreads = configuration["host"]?["clusterThreads"]?.Value<int>();
 
-            if (clusterPort is null || clientPort is null || clientThreads is null || clientThreads is null)
+            if (clusterPort is null || clientPort is null || clientThreads is null || clusterThreads is null)
             {
                 throw new ArgumentNullException("Invalid configuration to server end point");
             }

@@ -10,11 +10,6 @@ namespace Network.Nodes
     public interface IListenerNetworkNode : INetworkNode
     {
         /// <summary>
-        /// Обработка события соединения
-        /// </summary>
-        public delegate void ConnectionHandler(IPEndPoint endPoint);
-
-        /// <summary>
         /// Событие обработки подключения узла
         /// </summary>
         /// <param name="data"></param>

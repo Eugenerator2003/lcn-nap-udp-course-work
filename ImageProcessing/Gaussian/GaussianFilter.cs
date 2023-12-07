@@ -11,13 +11,16 @@ namespace ImageProcessing.Gaussian
     {
         public int Radius { get; protected set; }
 
-        public GaussianFilter(int radius)
+        public double Sigma { get; protected set; }
+
+        public GaussianFilter(int radius, double sigma)
         {
             Radius = radius;
+            Sigma = sigma;
         }
 
         public abstract Bitmap Apply(Bitmap image);
 
-        public abstract void ResizeKernel(int radius);
+        public abstract void SetParameters(int radius, double sigma);
     }
 }

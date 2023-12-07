@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "RHnqfaSQO/XWsFyEIMnu7VzzLb2WWBv99rmfS9mVeZoc8i6v59Y0sVJS429zex7vg4nq+ZseeyfAMWIuGe+h/A==",
+  "success": true,
+  "projectFilePath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Server\\Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Eugene\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\Eugene\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Eugene\\.nuget\\packages\\system.drawing.common\\8.0.0\\system.drawing.common.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

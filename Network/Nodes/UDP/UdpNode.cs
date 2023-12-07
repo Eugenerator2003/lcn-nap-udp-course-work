@@ -14,8 +14,10 @@ namespace Network.Nodes.UDP
 {
     public abstract class UdpNode : INetworkNode
     {
-        public event INetworkNode.MessageHandler OnAllReceived;
-        public event INetworkNode.MessageHandler OnFailedMessaging;
+        public event INetworkNode.EventHandler OnAllReceived;
+        public event INetworkNode.EventHandler OnFailedMessaging;
+
+        public IPEndPoint LocalEndPoint { get => (IPEndPoint)client.Client.LocalEndPoint; }
 
         protected int port;
         protected Mutex mutex;
@@ -29,11 +31,10 @@ namespace Network.Nodes.UDP
         public UdpNode(int port)
         {
             this.port = port;
-            client = new UdpClient(port);
             sendingQueue = new ConcurrentQueue<(byte[], IPEndPoint)>();
             transferDict = new Dictionary<IPEndPoint, Transfer>(new IPEndPointComparer());
+            client = new UdpClient(port);
             mutex = new Mutex(false);
-            Console.WriteLine(client.Client.LocalEndPoint.ToString());
             SetReceivePipeline();
         }
 
@@ -90,7 +91,12 @@ namespace Network.Nodes.UDP
             while (!isEnded)
             {
                 var result = client.ReceiveAsync().Result;
-                Console.WriteLine("Received: " + result.Buffer.Length);
+
+                //if (this is UdpListenerNode && port == 9002 /*&& result.Buffer.Length == 42630*/)
+                //{
+                //    int a = 10;
+                //}
+
                 PipelineContext context = new PipelineContext();
                 foreach (var handle in pipeline.GetInvocationList())
                 {
@@ -106,6 +112,11 @@ namespace Network.Nodes.UDP
                 {
                     SendOkMessage(result.RemoteEndPoint);
                 }
+
+                //if (this is UdpListenerNode && port == 9002 /*&& result.Buffer.Length == 42630*/)
+                //{
+                //    int a = 10;
+                //}
             }
         }
 
@@ -149,7 +160,6 @@ namespace Network.Nodes.UDP
                     datagram = Messages.ALL;
                 }
 
-                Console.WriteLine($"Sended: {datagram.Length}");
                 var received = SendDatagram(datagram, endPoint);
 
                 if (!received)
@@ -168,7 +178,8 @@ namespace Network.Nodes.UDP
 
         private bool SendDatagram(byte[] datagramData, IPEndPoint endPoint)
         {
-            int counter = 50;
+            int counter = 500;
+            //int counter = 10000;
             bool received = false;
             client.Send(datagramData, endPoint);
 
@@ -195,8 +206,8 @@ namespace Network.Nodes.UDP
                         var data = transferDict[endPoint].ToByteArray();
                         transferDict.Remove(endPoint);
                         OnAllReceived?.Invoke(data, endPoint);
-                        context.Next = false;
                     }
+                    context.Next = false;
                     mutex.ReleaseMutex();
                 }
             }

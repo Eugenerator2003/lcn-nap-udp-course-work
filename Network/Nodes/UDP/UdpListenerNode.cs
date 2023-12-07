@@ -19,25 +19,27 @@ namespace Network.Nodes.UDP
         /// </summary>
         /// <param name="data"></param>
         /// <param name="endPoint"></param>
-        public event ConnectionHandler OnClientDisconnected;
+        public event INetworkNode.ConnectionHandler OnClientDisconnected;
 
         /// <summary>
         /// Событие обработки отключения узла
         /// </summary>
         /// <param name="data"></param>
         /// <param name="endPoint"></param>
-        public event ConnectionHandler OnClientConnected;
+        public event INetworkNode.ConnectionHandler OnClientConnected;
 
         private int listeningThreads;
 
         public UdpListenerNode(int listeningThreads, int port) : base(port)
         {
             this.listeningThreads = listeningThreads;
+            //this.client = new UdpClient(new IPEndPoint(IPAddress.Parse("127.0.0.1"), port));
         }
 
         public override void Start()
         {
             Receiving();
+            //Task.Run(() => Receiving());
             Task.Run(() => Sending());
         }
 
@@ -66,7 +68,7 @@ namespace Network.Nodes.UDP
                 {
                     OnClientConnected?.Invoke(result.RemoteEndPoint);
                     context.SendOk = true;
-                    context.Next = true;
+                    context.Next = false;
                 }
             }
         }

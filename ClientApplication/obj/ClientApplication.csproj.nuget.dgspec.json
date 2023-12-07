@@ -10,14 +10,14 @@
         "projectUniqueName": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ClientApplication\\ClientApplication.csproj",
         "projectName": "ClientApplication",
         "projectPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ClientApplication\\ClientApplication.csproj",
-        "packagesPath": "C:\\Users\\Евгений\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Eugene\\.nuget\\packages\\",
         "outputPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ClientApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Евгений\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Eugene\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,7 +32,14 @@
         "frameworks": {
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
-            "projectReferences": {}
+            "projectReferences": {
+              "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Controllers\\NodeControllers.csproj": {
+                "projectPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Controllers\\NodeControllers.csproj"
+              },
+              "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ImageProcessing\\ImageProcessing.csproj": {
+                "projectPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ImageProcessing\\ImageProcessing.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -61,6 +68,210 @@
             },
             "Microsoft.WindowsDesktop.App.WindowsForms": {
               "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Controllers\\NodeControllers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Controllers\\NodeControllers.csproj",
+        "projectName": "NodeControllers",
+        "projectPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Controllers\\NodeControllers.csproj",
+        "packagesPath": "C:\\Users\\Eugene\\.nuget\\packages\\",
+        "outputPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Controllers\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Eugene\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Network\\Network.csproj": {
+                "projectPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Network\\Network.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ImageProcessing\\ImageProcessing.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ImageProcessing\\ImageProcessing.csproj",
+        "projectName": "ImageProcessing",
+        "projectPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ImageProcessing\\ImageProcessing.csproj",
+        "packagesPath": "C:\\Users\\Eugene\\.nuget\\packages\\",
+        "outputPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\ImageProcessing\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Eugene\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AForge": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "AForge.Imaging": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Network\\Network.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Network\\Network.csproj",
+        "projectName": "Network",
+        "projectPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Network\\Network.csproj",
+        "packagesPath": "C:\\Users\\Eugene\\.nuget\\packages\\",
+        "outputPath": "F:\\лабы\\сем 7\\псп\\курсовая работа\\lcn-nap-udp-course-work\\Network\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Eugene\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
