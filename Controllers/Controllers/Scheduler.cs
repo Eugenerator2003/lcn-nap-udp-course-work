@@ -26,6 +26,8 @@ namespace NodeControllers.Controllers
         private bool working = false;
         private ILogger? logger;
 
+        private readonly object _lock = new object();
+
         public Scheduler(ILogger? logger, IListenerNetworkNode clientSide, IListenerNetworkNode clusterSide)
         {
             this.clientSide = clientSide;
@@ -63,9 +65,12 @@ namespace NodeControllers.Controllers
                     while (!clusterReadiness.Values.Any(r => r)) ;
 
                     var destPoint = clusterReadiness.FirstOrDefault(r => r.Value).Key;
-                    clusterReadiness[destPoint] = false;
-                    clusterSide.EnqueueMessage(data, destPoint);
-                    clusterClientBinding.TryAdd(destPoint, srcPoint);
+                    lock (_lock)
+                    {
+                        clusterReadiness[destPoint] = false;
+                        clusterSide.EnqueueMessage(data, destPoint);
+                        clusterClientBinding.TryAdd(destPoint, srcPoint);
+                    }
                 }
             }
         }
@@ -81,9 +86,12 @@ namespace NodeControllers.Controllers
                     var destPoint = clusterClientBinding[srcPoint];
                     //var validData = new byte[data.Length - 3];
                     //Buffer.BlockCopy(data, 0, validData, 0, validData.Length);
-                    clientSide.EnqueueMessage(data, destPoint);
-                    clusterClientBinding.Remove(srcPoint, out var temp);
-                    clusterReadiness[srcPoint] = true;
+                    lock (_lock)
+                    {
+                        clientSide.EnqueueMessage(data, destPoint);
+                        clusterClientBinding.Remove(srcPoint, out var temp);
+                        clusterReadiness[srcPoint] = true;
+                    }
                 }
             }
         }

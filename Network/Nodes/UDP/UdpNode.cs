@@ -92,11 +92,6 @@ namespace Network.Nodes.UDP
             {
                 var result = client.ReceiveAsync().Result;
 
-                //if (this is UdpListenerNode && port == 9002 /*&& result.Buffer.Length == 42630*/)
-                //{
-                //    int a = 10;
-                //}
-
                 PipelineContext context = new PipelineContext();
                 foreach (var handle in pipeline.GetInvocationList())
                 {
@@ -112,11 +107,6 @@ namespace Network.Nodes.UDP
                 {
                     SendOkMessage(result.RemoteEndPoint);
                 }
-
-                //if (this is UdpListenerNode && port == 9002 /*&& result.Buffer.Length == 42630*/)
-                //{
-                //    int a = 10;
-                //}
             }
         }
 
