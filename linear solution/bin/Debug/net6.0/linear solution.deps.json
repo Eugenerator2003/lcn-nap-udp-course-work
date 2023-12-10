@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "linear solution/1.0.0": {
+      "Linear solution/1.0.0": {
         "dependencies": {
           "ImageProcessing": "1.0.0"
         },
         "runtime": {
-          "linear solution.dll": {}
+          "Linear solution.dll": {}
         }
       },
       "AForge/2.2.5": {
@@ -85,7 +85,7 @@
     }
   },
   "libraries": {
-    "linear solution/1.0.0": {
+    "Linear solution/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -31,6 +31,7 @@ namespace ClientWpfApplication
         private IIOController client;
         private ConcurrentQueue<System.Drawing.Bitmap> filtered;
         private Rotation[] rotations = new Rotation[] { Rotation.Rotate0, Rotation.Rotate90, Rotation.Rotate180, Rotation.Rotate270 };
+        int counter = 0;
 
         public MainWindow()
         {
@@ -52,8 +53,15 @@ namespace ClientWpfApplication
                 }
                 catch
                 {
+                    counter--;
                     MessageBox.Show("!!!", "Ошибка!");
                 }
+            };
+
+            client.OnFailedMessaging += () =>
+            {
+                MessageBox.Show("Сервер недоступен!", "Ошибка соединения");
+                client.Dispose();
             };
 
             client.Start();
@@ -70,13 +78,12 @@ namespace ClientWpfApplication
 
                 foreach(var filename in dialog.FileNames)
                 {
-                    //for (int i = 0; i < 4; i++)
+                    ///for (int i = 0; i < 4; i++)
                     //{
                         BitmapImage bitmap = new BitmapImage();
                         bitmap.BeginInit();
                         bitmap.UriSource = new Uri(filename);
                         //bitmap.Rotation = rotations[i];
-                        bitmap.Rotation = Rotation.Rotate0;
                         bitmap.EndInit();
                         AddToStackPanel(images, bitmap);
                     //}
@@ -105,7 +112,7 @@ namespace ClientWpfApplication
             }
 
             filteredImages.Children.Clear();
-            int counter = 0;
+            counter = 0;
             
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -116,21 +123,29 @@ namespace ClientWpfApplication
                 gaussianTask.Radius = radius;
                 gaussianTask.Sigma = sigma;
                 gaussianTask.Bitmap = BitmapCast.GetBitmapFromBitmapImage(bitmapImage);
-                client.Send(gaussianTask.ToBytes());
+                byte[] bytes = gaussianTask.ToBytes();
+                client.Send(bytes);
                 counter++;
             }
             
-            while(counter > 0)
+            Dispatcher.BeginInvoke(() =>
             {
-                if (filtered.TryDequeue(out var bitmap))
+                double all = counter;
+
+                while (counter > 0)
                 {
-                    var image = BitmapCast.GetBitmapImageFromBitmap(bitmap);
-                    AddToStackPanel(filteredImages, image);
-                    counter--;
+                    if (filtered.TryDequeue(out var bitmap))
+                    {
+                        var image = BitmapCast.GetBitmapImageFromBitmap(bitmap);
+                        AddToStackPanel(filteredImages, image);
+                        counter--;
+                        //MessageBox.Show($"{(all - counter) / all * 100}%");
+                    }
                 }
-            }
-            stopwatch.Stop();
-            MessageBox.Show($"На обработку изображений было затрачено {stopwatch.ElapsedMilliseconds} миллисекунд", "Время");
+
+                stopwatch.Stop();
+                MessageBox.Show($"На обработку изображений было затрачено {stopwatch.ElapsedMilliseconds} миллисекунд", "Время");
+            });
         }
 
         private void AddToStackPanel(StackPanel panel, BitmapImage bitmapImage)

@@ -9,6 +9,7 @@ namespace Network.Nodes.UDP
 {
     public class Transfer : IDisposable
     {
+        public long Number { get; set; }
         public MemoryStream Stream { get; }
         public bool OkStatus { get; set; }
 

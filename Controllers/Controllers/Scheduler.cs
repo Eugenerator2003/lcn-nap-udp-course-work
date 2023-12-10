@@ -57,22 +57,32 @@ namespace NodeControllers.Controllers
         {
             while (working)
             {
-                if (serializationTasks.TryDequeue(out var task))
+                int taskCount = serializationTasks.Count();
+                if (taskCount > 0)
                 {
-                    var clientPoint = task.Item1;
-                    var data = task.Item2;
-
-                    while (!clusterReadiness.Values.Any(r => r)) ;
-
-                    var clusterPoint = clusterReadiness.FirstOrDefault(r => r.Value).Key;
+                    IPEndPoint[] free;
+                    (IPEndPoint, byte[])[] tasks;
+                    while (!clusterReadiness.Any(c => c.Value)) ;
                     lock (_lock)
                     {
-                        clusterReadiness[clusterPoint] = false;
-                        clusterSide.EnqueueMessage(data, clusterPoint);
-                        clusterClientBinding.TryGetValue(clusterPoint, out var q);
-                        q.Enqueue(clientPoint);
-                        //clusterClientBinding.TryAdd(destPoint, srcPoint);
+                        free = clusterReadiness.Where(c => c.Value).Select(c => c.Key).ToArray();
+                        tasks = new (IPEndPoint, byte[])[free.Length < taskCount ? free.Length : taskCount];
                     }
+                    for (int i = 0; i < tasks.Length; i++)
+                    {
+                        serializationTasks.TryDequeue(out tasks[i]);
+                    }
+                    for (int i = 0; i < tasks.Length; i++)
+                    {
+                        var clientpoint = tasks[i].Item1;
+                        var data = tasks[i].Item2;
+
+                        clusterReadiness[free[i]] = false;
+                        clusterSide.EnqueueMessage(data, free[i]);
+                        clusterClientBinding.TryGetValue(free[i], out var q);
+                        q.Enqueue(clientpoint);
+                    }
+
                 }
             }
         }
@@ -86,22 +96,21 @@ namespace NodeControllers.Controllers
                     var clusterPoint = task.Item1;
                     var data = task.Item2;
                     var clientPoints = clusterClientBinding[clusterPoint];
-                    //var validData = new byte[data.Length - 3];
-                    //Buffer.BlockCopy(data, 0, validData, 0, validData.Length);
+                    IPEndPoint client;
                     lock (_lock)
                     {
-                        var client = clientPoints.Dequeue();
-                        clientSide.EnqueueMessage(data, client);
-                        //clusterClientBinding.Remove(clusterPoint, out var temp);
+                        client = clientPoints.Dequeue();
                         clusterReadiness[clusterPoint] = true;
-                        logger?.Log($"Sending to {client}");
                     }
+                    clientSide.EnqueueMessage(data, client);
+                    logger?.Log($"Sending to {client}");
                 }
             }
         }
 
         private void SetClientEvents()
         {
+            clientSide.OnAllReceived += (data, point) => logger?.Log($"Received {data.Length} bytes from {point}");
             clientSide.OnAllReceived += (data, point) => serializationTasks.Enqueue((point, data));
             clientSide.OnClientDisconnected += (point) => logger?.Log($"Can't send message to client: {point}");
         }

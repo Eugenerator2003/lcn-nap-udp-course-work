@@ -1,5 +1,4 @@
-﻿using Network.Nodes;
-using Network.Util;
+﻿using Network.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using static Network.Nodes.IListenerNetworkNode;
 
 namespace Network.Nodes.UDP
 {
@@ -38,16 +36,12 @@ namespace Network.Nodes.UDP
 
         public override void Start()
         {
-            Receiving();
             //Task.Run(() => Receiving());
-            Task.Run(() => Sending());
-        }
-
-        protected new void Receiving()
-        {
+            //Task.Run(() => Sending());
             for (int i = 0; i < listeningThreads; i++)
             {
-                Task.Run(() => base.Receiving());
+                Task.Run(() => Sending());
+                Task.Run(() => Receiving());
             }
         }
 
@@ -56,19 +50,20 @@ namespace Network.Nodes.UDP
             base.SetReceivePipeline();
             pipeline += CheckHello;
 
-            OnFailedMessaging -= EnqueueAgain;
-            OnFailedMessaging += (data, endPoint) => OnClientDisconnected.Invoke(endPoint);
+            //OnFailedMessaging -= EnqueueAgain;
+            OnFailedMessaging += (data, endPoint) => OnClientDisconnected?.Invoke(endPoint);
         }
 
-        protected void CheckHello(UdpReceiveResult result, PipelineContext context)
+        protected void CheckHello(PipelineContext context)
         {
             if (context.Next)
             {
-                if (result.Buffer.SequenceEqual(Messages.HELLO))
+                if (context.Data.SequenceEqual(Messages.HELLO))
                 {
-                    OnClientConnected?.Invoke(result.RemoteEndPoint);
+                    OnClientConnected?.Invoke(context.EndPoint);
                     context.SendOk = true;
                     context.Next = false;
+                    transferDict.Add(context.EndPoint, new List<Transfer>());
                 }
             }
         }

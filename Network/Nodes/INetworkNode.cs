@@ -1,5 +1,4 @@
-﻿using Network.Nodes.UDP;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -42,7 +41,7 @@ namespace Network.Nodes
         /// <param name="receiveResult">Результат чтения из UDP сокета</param>
         /// <param name="pipelineContext">Необходимость отправлять </param>
         /// <returns></returns>
-        public delegate void OnReceived(UdpReceiveResult receiveResult, PipelineContext pipelineContext);
+        public delegate void ReceiveHandle(PipelineContext pipelineContext);
 
         IPEndPoint LocalEndPoint { get; }
 
